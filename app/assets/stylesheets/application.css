@@ -12,3 +12,12 @@
  *
  *= require_self
  */
+
+ .waiting_on {
+  background-color: yellow;
+}
+
+.received {
+background-color: green
+}
+
