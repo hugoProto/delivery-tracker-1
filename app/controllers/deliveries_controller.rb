@@ -24,7 +24,7 @@ class DeliveriesController < ApplicationController
     the_delivery.user_id = @current_user.id
 
     the_delivery.description = params.fetch("description")
-    the_delivery.details = params.fetch("details")
+    the_delivery.details = params.fetch("query_details")
     the_delivery.supposed_to_arrive_at = params.fetch("supposed_to_arrive_at")
 
     if the_delivery.valid?
@@ -38,6 +38,7 @@ class DeliveriesController < ApplicationController
   def update
     the_id = params.fetch("path_id")
     the_delivery = Delivery.where({ :id => the_id }).at(0)
+    
 
     #the_delivery.arrived = params.fetch("query_supposed_to_arrive_on")
 

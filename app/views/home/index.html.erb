@@ -1,6 +1,12 @@
-<h1>Delivery Tracker</h1>
+  <div>
+    <a href="/">Your todo list</a>
+    " | "
+    <a href="/edit_user_profile">Edit profile</a>
+     " | "
+    <a href="/user_sign_out">Sign out</a>
+  </div>
 
-<h2>Expecting a packages?</h2>
+<h1>Delivery Tracker</h1>
 
 <p>Know if something gets lost in the mail.</p>
 
@@ -19,23 +25,14 @@
       </div>
 
       <div>
-        <label for="details_box">Details</label>
-        <input type="text" name="details" id="details_box">
+        <label for="supposed_to_arrive_on_box">Supposed to arrive on</label>
+        <input type="date" id="supposed_to_arrive_on_box" name="supposed_to_arrive_at">
       </div>
 
       <div>
-        <label for="supposed_to_arrive_on_box">Supposed to arrive on</label>
-        <input type="date" name="supposed_to_arrive_at" id="supposed_to_arrive_on_box">
+        <label for="details_box">Details</label>
+        <textarea id="details_box" name="query_details" rows="3"></textarea>
       </div>
-
-      <%# are details being saved? %>
-      <%#<div>
-        <label for="details_box">
-          Details
-        </label>
-
-        <textarea id="details_box" name="query_content" rows="3"></textarea>
-      </div> %>
 
       <button>Log delivery</button>
     </form>
@@ -48,8 +45,8 @@
   <ul>
     <% @waiting_on.each do |delivery| %>
       <li>
-        <%# delivery.details?  %>
         <p><%= delivery.user_id %></p>
+        <p><%= delivery.description %></p>
         <p><%= delivery.details %></p>
         <p>Supposed to arrive on <%= delivery.supposed_to_arrive_at %></p>
 
