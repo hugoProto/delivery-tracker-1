@@ -40,7 +40,7 @@ class DeliveriesController < ApplicationController
     the_delivery = Delivery.where({ :id => the_id }).at(0)
     
 
-    #the_delivery.arrived = params.fetch("query_supposed_to_arrive_on")
+    the_delivery.arrived = params.fetch("arrived")
 
     if the_delivery != nil
       the_delivery.save
