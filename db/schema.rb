@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_18_171050) do
+ActiveRecord::Schema.define(version: 2023_04_27_193355) do
 
   create_table "deliveries", force: :cascade do |t|
     t.string "description"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_171050) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "arrived", default: false
-    t.datetime "supposed_to_arrive_at"
+    t.datetime "supposed_to_arrive_at", null: false
     t.string "details"
   end
 

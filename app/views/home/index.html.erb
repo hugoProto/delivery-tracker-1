@@ -45,32 +45,43 @@
   <ul>
     <% @waiting_on.each do |delivery| %>
       <li>
-        <p><%= delivery.user_id %></p>
+        <p><%= delivery.id %></p>
         <p><%= delivery.description %></p>
         <p><%= delivery.details %></p>
-        <p>Supposed to arrive on <%= delivery.supposed_to_arrive_at %></p>
+        <% if delivery.supposed_to_arrive_at < 3.days.ago.to_date %>
+         <div style="color: red">
+            <p>Supposed to arrive on <%= delivery.supposed_to_arrive_at %></p>
+          </div>
+        <% else %>
+          <div style="color: black">
+            <p>Supposed to arrive on <%= delivery.supposed_to_arrive_at %></p>
+          </div>
+        <% end %>
 
         <form action="/modify_delivery/<%= delivery.id %>" method="post">
           <input type="hidden" name="arrived" value="true">
           <button>Mark as received</button>
         </form>
-        <%# if delivery.supposed_to_arrive_at > 3.days.ago.to_date %>
       <% end %>
-    </li>
-    <br>
+      </li>
   </ul>
+    <br>
 </div>
 
 <div class="received">
   <h2>Received</h2>
   <ul>
+  <li>
     <% @received.each do |delivery| %>
       <div>
-        <%= delivery.details %>
-        <%= time_ago_in_words(delivery.updated_at) %>
-        <a href="/delete_delivery/<%= delivery.id %>">Delete</a>
+        <%= delivery.description %>
+        <small>
+        <p>Updated <%= delivery.updated_at %></p>
+        <a href="/delete_delivery/<%= delivery.id %>">"Delete"</a>
+        </small>
       </div>
+  </li>
+  </ul>
       <br>
     <% end %>
-  </ul>
 </div>
